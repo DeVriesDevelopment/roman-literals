@@ -1,5 +1,4 @@
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -27,22 +26,22 @@ class Converter {
   }
 
   static String convert(int i) {
-    if(i >= 4000 || i < 1){
+    if (i >= 4000 || i < 1) {
       throw new IllegalArgumentException();
     }
 
     int remaining = i;
     String romanNumeral = "";
-    while(remaining > 0) {
+    while (remaining > 0) {
       int finalRemaining = remaining;
       int biggestNumeral = ROMAN_NUMERALS.keySet().stream().filter(k -> finalRemaining >= k).findFirst().orElse(1);
       romanNumeral += (ROMAN_NUMERALS.get(biggestNumeral));
       remaining -= biggestNumeral;
     }
-    System.out.println(romanNumeral);
-    for (Map.Entry<String, String> replacement: ROMAN_NUMERALS_REPLACEMENT_MAPPER.entrySet()) {
+    for (Map.Entry<String, String> replacement : ROMAN_NUMERALS_REPLACEMENT_MAPPER.entrySet()) {
       romanNumeral = romanNumeral.replace(replacement.getKey(), replacement.getValue());
-    };
+    }
+    ;
     return romanNumeral;
   }
 }

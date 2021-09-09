@@ -12,105 +12,33 @@ public class RomanLiteralsTest {
     return Converter.convert(i);
   }
 
-  static Map<String, Integer> parameters = new HashMap<>();
+  private static final Map<String, Integer> PARAMETERS = new HashMap<>();
 
   static {
-    parameters.put("I", 1);
+    PARAMETERS.put("I", 1);
+    PARAMETERS.put("II", 2);
+    PARAMETERS.put("III", 3);
+    PARAMETERS.put("V", 5);
+    PARAMETERS.put("X", 10);
+    PARAMETERS.put("L", 50);
+    PARAMETERS.put("C", 100);
+    PARAMETERS.put("D", 500);
+    PARAMETERS.put("M", 1000);
+    PARAMETERS.put("IV", 4);
+    PARAMETERS.put("VI", 6);
+    PARAMETERS.put("XIV", 14);
+
+    PARAMETERS.put("XLIX", 49);
+    PARAMETERS.put("XCIX", 99);
+    PARAMETERS.put("CDXCIX", 499);
+    PARAMETERS.put("CMXCIX", 999);
+    PARAMETERS.put("MMMCMXCIX", 3999);
+    PARAMETERS.put("MDCLXVII", 1667);
   }
 
   @Test
   public void parameterizedRomanNumeralTest(){
-    parameters.forEach((String key, Integer value) -> assertEquals(key, convert(1)));
-  }
-
-  @Test
-  public void TestConvertTwoToRomanLiterals() {
-    assertEquals("II", convert(2));
-  }
-
-  @Test
-  public void TestConvertThreeToRomanLiterals() {
-    assertEquals("III", convert(3));
-  }
-
-  @Test
-  public void TestConvertFiveToRomanLiterals() {
-    assertEquals("V", convert(5));
-  }
-
-  @Test
-  public void TestConvertTenToRomanLiterals() {
-    assertEquals("X", convert(10));
-  }
-
-  @Test
-  public void TestConvertFiftyToRomanLiterals() {
-    assertEquals("L", convert(50));
-  }
-
-  @Test
-  public void TestConvertHundredToRomanLiterals() {
-    assertEquals("C", convert(100));
-  }
-
-  @Test
-  public void TestConverterFiveHundredToRomanLiterals() {
-    assertEquals("D", convert(500));
-  }
-
-  @Test
-  public void TestConverterThousandToRomanLiterals() {
-    assertEquals("M", convert(1000));
-  }
-
-  @Test
-  public void TestConverterFourToRomanLiterals() {
-    assertEquals("IV", convert(4));
-  }
-
-  @Test
-  public void TestConverterSixToRomanLiterals() {
-    assertEquals("VI", convert(6));
-  }
-
-  @Test
-  public void TestConverterNineToRomanLiterals() {
-    assertEquals("IX", convert(9));
-  }
-
-  @Test
-  public void TestConverterFourteenToRomanLiterals() {
-    assertEquals("XIV", convert(14));
-  }
-
-  @Test
-  public void TestConverterFourtynineToRomanLiterals() {
-    assertEquals("XLIX", convert(49));
-  }
-
-  @Test
-  public void TestConverterNinetynineToRomanLiterals() {
-    assertEquals("XCIX", convert(99));
-  }
-
-  @Test
-  public void TestConverterFourNinetyNineToRomanLiterals() {
-    assertEquals("CDXCIX", convert(499));
-  }
-
-  @Test
-  public void TestConverterNineHunderdNinetyNineToRomanLiterals() {
-    assertEquals("CMXCIX", convert(999));
-  }
-
-  @Test
-  public void TestConverterThreeThousandNineHundredNinetyNineToRomanLiterals() {
-    assertEquals("MMMCMXCIX", convert(3999));
-  }
-
-  @Test
-  public void Test(){
-    assertEquals("MDCLXVII", convert(1667));
+    PARAMETERS.forEach((String key, Integer value) -> assertEquals(key, convert(value)));
   }
 
   @Test
