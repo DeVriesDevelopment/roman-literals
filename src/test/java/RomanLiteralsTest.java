@@ -1,48 +1,34 @@
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RomanLiteralsTest {
+class RomanLiteralsTest {
 
-  private static String convert(int i) {
-    return Converter.convert(i);
-  }
-
-  private static final Map<String, Integer> PARAMETERS = new HashMap<>();
+  private static final Map<Integer, String> romanNumeralTestParameters = new HashMap<>();
 
   static {
-    PARAMETERS.put("I", 1);
-    PARAMETERS.put("II", 2);
-    PARAMETERS.put("III", 3);
-    PARAMETERS.put("V", 5);
-    PARAMETERS.put("X", 10);
-    PARAMETERS.put("L", 50);
-    PARAMETERS.put("C", 100);
-    PARAMETERS.put("D", 500);
-    PARAMETERS.put("M", 1000);
-    PARAMETERS.put("IV", 4);
-    PARAMETERS.put("VI", 6);
-    PARAMETERS.put("XIV", 14);
-
-    PARAMETERS.put("XLIX", 49);
-    PARAMETERS.put("XCIX", 99);
-    PARAMETERS.put("CDXCIX", 499);
-    PARAMETERS.put("CMXCIX", 999);
-    PARAMETERS.put("MMMCMXCIX", 3999);
-    PARAMETERS.put("MDCLXVII", 1667);
+    romanNumeralTestParameters.put(1, "I");
+    romanNumeralTestParameters.put(2, "II");
+    romanNumeralTestParameters.put(3, "III");
+    romanNumeralTestParameters.put(4, "IV");
+    romanNumeralTestParameters.put(5, "V");
+    romanNumeralTestParameters.put(6, "VI");
+    romanNumeralTestParameters.put(9, "IX");
+    romanNumeralTestParameters.put(10, "X");
   }
 
   @Test
-  public void parameterizedRomanNumeralTest(){
-    PARAMETERS.forEach((String key, Integer value) -> assertEquals(key, convert(value)));
+  void TestParameterizedRomanNumerals() {
+    for (Map.Entry<Integer, String> item : romanNumeralTestParameters.entrySet()) {
+      assertEquals(item.getValue(), convert(item.getKey()));
+    }
   }
 
-  @Test
-  public void TestConverterFourThousand(){
-    assertThrows(IllegalArgumentException.class, () -> convert(4000));
+  private String convert(int number) {
+    Converter converter = new Converter();
+    return converter.convert(number);
   }
 }
